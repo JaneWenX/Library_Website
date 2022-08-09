@@ -1,15 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
-const Homepage = () => {
+const ContactUs = () => {
   return (
     <Wrapper>
-    <h1>Homepage</h1>  
+        ContactUs
+
     </Wrapper>
   )
 }
 const Wrapper = styled.div`
     margin: 0px;
-    height:85%;
+    height:5%;
     display: flex;
 `
-export default Homepage;
+export default ContactUs
