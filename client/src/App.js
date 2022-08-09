@@ -6,11 +6,13 @@ import { Route,Routes } from "react-router-dom";
 import Header from './Header'
 import Footer from './Footer'
 import styled from "styled-components";
+import Navbar from "./Navbar";
 const App = () =>{
 
   return (
     <Wrapper>
       <Header/>
+      <Navbar/>
       <Routes>
         <Route exact path="/" element={<Homepage/>}/>
         <Route path="/category" element={<Category/>}/>
@@ -26,5 +28,10 @@ const App = () =>{
 const Wrapper = styled.div`
   height: 100vh;
   width:auto;
-`
+  background: var(--color-orange);
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 110px);
+`;
+
 export default App;
