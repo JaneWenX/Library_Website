@@ -3,13 +3,14 @@ import Category from "./Category"
 import Bookdetails from './Bookdetails'
 import History from './History'
 import { Route,Routes } from "react-router-dom";
-import Header from './Header'
+import Header from './header-content/Header'
 import Footer from './Footer/Footer'
 import styled from "styled-components";
-import Navbar from "./Navbar";
+import Navbar from "./header-content/Navbar";
 import ContactUs from "./Footer/ContactUs";
 import Location from "./Footer/Location";
 import GlobalStyles from "./GlobalStyles";
+import SignIn from "./header-content/SignIn";
 const App = () =>{
 
   return (
@@ -24,6 +25,8 @@ const App = () =>{
         <Route path="/history" element={<History/>}/>
         <Route path="/contact" element={<ContactUs/>}/>
         <Route path="/location" element={<Location/>}/>
+        <Route path="/signin" element={<SignIn/>}/>
+    
         <Route path="">404</Route>
       </Routes>
     <Footer/>

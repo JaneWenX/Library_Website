@@ -10,7 +10,7 @@ const ContactUs = () => {
 }
 const Wrapper = styled.div`
     margin: 0px;
-    height:5%;
+    height:100%;
     display: flex;
 `
 export default ContactUs
