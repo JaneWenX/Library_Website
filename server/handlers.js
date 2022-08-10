@@ -12,16 +12,7 @@ const options = {
 };
 
 const handleSearch = () => {
-    return request('http://openlibrary.org/search.json?q=the+lord+of+the+rings') // 1
-      .then((response) => JSON.parse(response))
-      .then((parsedResponse) => {
-        console.log(parsedResponse)
-        return parsedResponse.data; // 2
-      })
-      .catch((err) => {
-        return err.error?JSON.parse(err.error):err
-      });
-  };
+}
 
 // const handleSearch = (req, res) => {
 //     res.status(200).json({

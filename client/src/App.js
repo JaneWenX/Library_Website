@@ -9,10 +9,12 @@ import styled from "styled-components";
 import Navbar from "./Navbar";
 import ContactUs from "./Footer/ContactUs";
 import Location from "./Footer/Location";
+import GlobalStyles from "./GlobalStyles";
 const App = () =>{
 
   return (
     <Wrapper>
+      <GlobalStyles/>
       <Header/>
       <Navbar/>
       <Routes>
@@ -31,11 +33,13 @@ const App = () =>{
 
 const Wrapper = styled.div`
   height: 100vh;
-  width:auto;
+  width:100vw;
   background: var(--color-orange);
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 110px);
+  margin-left:0;
+
+/* height: calc(100vh - 110px); */
 `;
 
 export default App;
