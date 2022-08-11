@@ -14,13 +14,20 @@ const options = {
 const handleSearch = () => {
 }
 
-// const handleSearch = (req, res) => {
-//     res.status(200).json({
-//         status:200,
-//         data:req,
-//         message:'Search results for books, authors, and more'})
-//     }
+const postAccount = async(req,res) =>{
+  const client = new MongoClient(MONGO_URI, options);
+
+  await client.connect();
+  const db = client.db("Library");
+
+  //to define how to get new added item info in cart
+  const newAccount = await db.collection("accounts").insertOne(req.body);
+
+  newAccount? res.status(200).json({status: 200,data: newAccount,message: "add newAccount success!",})
+    : res.status(404).json({ status: 404, message: "add newAccount fail!" });
+client.close();
+
+}
 
 
-
-module.exports = {handleSearch}
+module.exports = {handleSearch,postAccount}

@@ -1,9 +1,16 @@
 const express = require('express');
-const { handleSearch } = require('./handlers');
+const { handleSearch,postAccount } = require('./handlers');
+// const {slideItems} = require('.././client/src/slideshow-gallery/')
 const port = 8000;
 
 express()
     .get('/api/books',handleSearch)
+
+    .get('/api/account', (req, res) => {
+        res.status(200).json({status:200,message:'Hello World!'})
+    })
+
+    .post('/api/account',postAccount)
 
     .get('/', (req, res) => {
     res.status(200).json({status:200,message:'Hello World!'})

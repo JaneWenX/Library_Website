@@ -1,13 +1,31 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 const SignIn = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email,setEmail] = useState('')
+  const [password,setPassword] = useState('')
 
-const handleSubmit = ()=>{
 
-    
+const handleSubmit = (e) =>{
+  e.preventDefault();
+ 
+  axios({
+    method:'POST',
+    url:'/api/account',
+    data:{
+    email:email,
+    password:password.at,
+  }
+})
+  .then((res)=>{
+    console.log(res)
+    window.location('/')
+  })
+  .catch((err)=>{
+    console.log("SignIn:",err)
+  })
+
 }
 
   return (
@@ -17,17 +35,19 @@ const handleSubmit = ()=>{
         <Input
           placeholder="Please enter email address"
           type="email"
-          required
           onChange={(e)=>setEmail(e.target.value)}
+          // value={data.email}
+          required
         ></Input>
         <Label>Password</Label>
         <Input
           placeholder="Please enter the password"
           type="password"
-          required
           onChange={(e)=>setPassword(e.target.value)}
+          // value={data.password}
+          required
         ></Input>
-        <Button>LOG IN</Button>
+        <Button type="submit">LOG IN</Button>
       </Form>
     </Wrapper>
   );
