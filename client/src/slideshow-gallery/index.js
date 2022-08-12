@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink,  } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+// import { subjects } from './data';
 
 import { ReactComponent as ChevronLeft } from '../assets/chevron-left.svg';
 import { ReactComponent as ChevronRight } from '../assets/chevron-right.svg';
@@ -32,9 +33,9 @@ const Slideshow = (props) => {
   return (
     <SlideWrapper>
       <ImageBox>
-        {/* <NavLink to={`/items[actionIndex].image`}> */}
+        <NavLink to={`/subjects/${items[activeIndex].subject}`}>
         <img alt={items[activeIndex].caption} src={items[activeIndex].image}/>
-        {/* </NavLink> */}
+        </NavLink>
         <NavButton position="left" onClick={moveTo(activeIndex - 1)}>
           <ChevronLeft />
         </NavButton>

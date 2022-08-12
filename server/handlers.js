@@ -29,5 +29,19 @@ client.close();
 
 }
 
+const getAccount = async(req,res) =>{
+  const client = new MongoClient(MONGO_URI, options);
 
-module.exports = {handleSearch,postAccount}
+  await client.connect();
+  const db = client.db("Library");
+
+  //to define how to get new added item info in cart
+  const allAccounts = await db.collection("accounts").find().toArray();
+
+  newAccount? res.status(200).json({status: 200,data: allAccounts,message: "add allAccounts success!",})
+    : res.status(404).json({ status: 404, message: "add allAccounts fail!" });
+client.close();
+
+}
+
+module.exports = {handleSearch,postAccount,getAccount}

@@ -21,12 +21,11 @@ const App = () =>{
       <Routes>
         <Route exact path="/" element={<Homepage/>}/>
         <Route path="/category" element={<Category/>}/>
-        <Route path="/books/:bookId" element={<Bookdetails/>}/>
+        <Route path="/subjects/:subjectId" element={<Bookdetails/>}/>
         <Route path="/history" element={<History/>}/>
         <Route path="/contact" element={<ContactUs/>}/>
         <Route path="/location" element={<Location/>}/>
         <Route path="/signin" element={<SignIn/>}/>
-    
         <Route path="">404</Route>
       </Routes>
     <Footer/>

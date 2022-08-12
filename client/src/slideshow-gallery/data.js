@@ -12,30 +12,45 @@ const slideItems = [
     {
         image:action,
         caption:"ACTION AND ADVENTURE",
+        subject:"action"
     },{
         image:children,
         caption:"CHILDREN",
+        subject:"children"
     },{
         image:classics,
         caption:"CLASSICS",
+        subject:"classics"
     },{
         image:comic,
         caption:"COMICS",
+        subject:"comics"
+
     },{
         image:fantasy,
         caption:"FANTASY",
+        subject:"fantasy"
+
     },{
         image:history,
         caption:"HISTORY",
+        subject:"history"
+
     },{
         image:horror,
         caption:"HORROR",
+        subject:"horror"
+
     },{
         image:love,
         caption:"LOVE",
+        subject:"love"
+
     },{
         image:novel,
         caption:"NOVEL",
+        subject:"novel"
+
     },
 ]
 

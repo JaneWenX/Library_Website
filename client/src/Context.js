@@ -10,7 +10,7 @@ const BookProvider = ({children}) => {
     axios
     .get("http://openlibrary.org/subjects/love.json")
     .then((res) => {
-      console.log(res.data)
+      // console.log(res.data)
       // setItems(res);
     })
     .catch((err) => {
@@ -22,7 +22,7 @@ const BookProvider = ({children}) => {
     axios
     .get("http://openlibrary.org/subjects.json")
     .then((res) => {
-      console.log(res)
+      // console.log(res)
       // setItems(res);
     })
     .catch((err) => {
