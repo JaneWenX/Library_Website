@@ -1,22 +1,21 @@
-const express = require('express');
-const { handleSearch,postAccount,getAccount } = require('./handlers');
+const express = require("express");
+const morgan = require("morgan");
+const { postAccount, getAccount,getHistory } = require("./handlers");
 // const {slideItems} = require('.././client/src/slideshow-gallery/')
 const port = 8000;
 
 express()
-    .get('/api/books',handleSearch)
+  .use(morgan("tiny"))
+  .use(express.json())
+  .use(express.static("public"))
 
-    .get('/api/account', (req, res) => {
-        res.status(200).json({status:200,message:'Hello World!'})
-    })
+  .post("/api/account", postAccount)
 
-    .post('/api/account',postAccount)
-    .get('/api/account',getAccount)
-    .get('/', (req, res) => {
-    res.status(200).json({status:200,message:'Hello World!'})
-    })
-    
+  .get("/api/account", getAccount)
 
-    .listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-    });
+  .get("/api/history",getHistory)
+
+
+  .listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
+  });

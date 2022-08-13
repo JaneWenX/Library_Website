@@ -15,12 +15,12 @@ const handleSubmit = (e) =>{
     url:'/api/account',
     data:{
     email:email,
-    password:password.at,
+    password:password,
   }
 })
   .then((res)=>{
     console.log(res)
-    window.location('/')
+    window.location = '/'
   })
   .catch((err)=>{
     console.log("SignIn:",err)

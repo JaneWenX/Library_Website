@@ -1,7 +1,4 @@
-"use strict";
 
-// use this package to generate unique ids: https://www.npmjs.com/package/uuid
-// const { v4: uuidv4 } = require("uuid");
 const { MongoClient } = require("mongodb");
 require("dotenv").config();
 const { MONGO_URI } = process.env;
@@ -10,9 +7,6 @@ const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 };
-
-const handleSearch = () => {
-}
 
 const postAccount = async(req,res) =>{
   const client = new MongoClient(MONGO_URI, options);
@@ -38,10 +32,25 @@ const getAccount = async(req,res) =>{
   //to define how to get new added item info in cart
   const allAccounts = await db.collection("accounts").find().toArray();
 
-  newAccount? res.status(200).json({status: 200,data: allAccounts,message: "add allAccounts success!",})
-    : res.status(404).json({ status: 404, message: "add allAccounts fail!" });
+  allAccounts? res.status(200).json({status: 200,data: allAccounts,message: "get allAccounts success!",})
+    : res.status(404).json({ status: 404, message: "get allAccounts fail!" });
 client.close();
 
 }
 
-module.exports = {handleSearch,postAccount,getAccount}
+const getHistory = async(req,res) =>{
+  const client = new MongoClient(MONGO_URI, options);
+
+  await client.connect();
+  const db = client.db("Library");
+
+  //to define how to get new added item info in cart
+  const myHistory = await db.collection("history").find().toArray();
+
+  myHistory? res.status(200).json({status: 200,data:myHistory, message: "get myHistory success!",})
+    : res.status(404).json({ status: 404, message: "get myHistory fail!" });
+client.close();
+
+}
+
+module.exports = {postAccount,getAccount,getHistory}
