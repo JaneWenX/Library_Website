@@ -17,6 +17,7 @@ const Wrapper = styled.footer`
   justify-content: center;
   align-items: center;
   text-align: center;
+  /* margin-top:100%; */
 `;
 const StyledNav = styled(NavLink)`
   margin: 40px;
@@ -24,4 +25,5 @@ const StyledNav = styled(NavLink)`
   color: white;
   font-weight: bold;
 `;
+
 export default Footer;

@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <Wrapper>
     <Div>
-      <StyledNav to='/'>
+    <StyledNav to='/'>
     <ImHome size={25}/>
     </StyledNav>
     <ImMenu size={25}/>
@@ -18,7 +18,17 @@ const Navbar = () => {
     <StyledNav to='/signin'>
     <Span>My Account</Span>
     </StyledNav>
-    <VscAccount size={25}/>
+    <NavbarDropdown>
+    <VscAccount size={25} cursor="pointer"/>
+    {/* <MenuToggle></MenuToggle> */}
+    <NavbarDropdownContent>
+      <List to="/history">History</List>
+      <List to="/like">My Likes</List>
+      <List to="/favorite">My Favorites</List>
+      <List to="/mycart">My Cart</List>
+      {/* <List>Logout</List> */}
+  </NavbarDropdownContent>
+  </NavbarDropdown>
     </Div>
     </Wrapper>
   )
@@ -29,8 +39,8 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     background-color:lightgray;
-    justify-content:space-between;
-
+    justify-content:space-around;
+    color:white;
 `
 const Div = styled.div`
     margin:10px 15px;
@@ -38,7 +48,6 @@ const Div = styled.div`
     align-items: center;
     justify-content:center;
     background-color:lightgray;
-
 `
 const Span = styled.span`
   font-size: 18px;
@@ -49,4 +58,33 @@ const StyledNav = styled(NavLink)`
   color: white;
   margin: 0px 50px;
 `;
+const NavbarDropdownContent = styled.ul`
+   display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0, 2);
+    padding: 12px 16px;
+    z-index: 1;
+`
+const NavbarDropdown = styled.div`
+    position: relative;
+    display: inline-block;
+    &:hover ${NavbarDropdownContent} {
+      display: block;
+    }
+  `;
+
+const List = styled(NavLink)`
+  color: black;
+  font-weight: bold;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  
+  &:hover {
+  color:grey;
+  display: block;
+}
+`
 export default Navbar;

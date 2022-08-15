@@ -53,4 +53,88 @@ client.close();
 
 }
 
-module.exports = {postAccount,getAccount,getHistory}
+const addFavorite = async(req,res)=>{
+  const client = new MongoClient(MONGO_URI, options);
+
+  await client.connect();
+  const db = client.db("Library");
+
+  //to define how to get new added item info in cart
+  const newFav = await db.collection("favorites").insertOne(req.body);
+
+  newFav? res.status(200).json({status: 200,data: newFav,message: "add newFav success!",})
+    : res.status(404).json({ status: 404, message: "add newFav fail!" });
+client.close();
+}
+
+const addToBorrowCart = async(req,res)=>{
+  const client = new MongoClient(MONGO_URI, options);
+
+  await client.connect();
+  const db = client.db("Library");
+
+  //to define how to get new added item info in cart
+  const borrowCart = await db.collection("borrowCart").insertOne(req.body);
+
+  borrowCart? res.status(200).json({status: 200,data: borrowCart,message: "add borrowCart success!",})
+    : res.status(404).json({ status: 404, message: "add borrowCart fail!" });
+client.close();
+}
+
+const shareTo = async(req,res) =>{
+  const client = new MongoClient(MONGO_URI, options);
+
+  await client.connect();
+  const db = client.db("Library");
+
+  //to define how to get new added item info in cart
+  const wantToShare = await db.collection("share").insertOne(req.body);
+
+  wantToShare? res.status(200).json({status: 200,data: wantToShare,message: "add wantToShare success!",})
+    : res.status(404).json({ status: 404, message: "add wantToShare fail!" });
+client.close();
+}
+
+const getLike = async(req,res) =>{
+  const client = new MongoClient(MONGO_URI, options);
+
+  await client.connect();
+  const db = client.db("Library");
+
+  //to define how to get new added item info in cart
+  const allLiked = await db.collection("favorites").find().toArray();
+
+  allLiked? res.status(200).json({status: 200,data: allLiked,message: "get allLiked success!",})
+    : res.status(404).json({ status: 404, message: "get allLiked fail!" });
+client.close();
+
+}
+const getBorrowCart = async(req,res) =>{
+  const client = new MongoClient(MONGO_URI, options);
+
+  await client.connect();
+  const db = client.db("Library");
+
+  //to define how to get new added item info in cart
+  const allCart = await db.collection("borrowCart").find().toArray();
+
+  allCart? res.status(200).json({status: 200,data: allCart,message: "get allCart success!",})
+    : res.status(404).json({ status: 404, message: "get allCart fail!" });
+client.close();
+
+}
+const getShare = async(req,res) =>{
+  const client = new MongoClient(MONGO_URI, options);
+
+  await client.connect();
+  const db = client.db("Library");
+
+  //to define how to get new added item info in cart
+  const allShare = await db.collection("share").find().toArray();
+
+  allShare? res.status(200).json({status: 200,data: allShare,message: "get allShare success!",})
+    : res.status(404).json({ status: 404, message: "get allShare fail!" });
+client.close();
+
+}
+module.exports = {postAccount,getAccount,getHistory,addFavorite,addToBorrowCart,shareTo,getLike,getBorrowCart,getShare  }

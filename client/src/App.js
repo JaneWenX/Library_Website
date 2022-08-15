@@ -1,7 +1,7 @@
 import Homepage from "./Homepage";
 import Category from "./Category"
 import Bookdetails from './Bookdetails'
-import History from './History'
+import History from './header-content/History'
 import { Route,Routes } from "react-router-dom";
 import Header from './header-content/Header'
 import Footer from './Footer/Footer'
@@ -11,6 +11,10 @@ import ContactUs from "./Footer/ContactUs";
 import Location from "./Footer/Location";
 import GlobalStyles from "./GlobalStyles";
 import SignIn from "./header-content/SignIn";
+import MyLike from './header-content/MyLike'
+import MyFav from './header-content/MyFav'
+import MyCarts from './header-content/MyCarts';
+
 const App = () =>{
 
   return (
@@ -26,6 +30,10 @@ const App = () =>{
         <Route path="/contact" element={<ContactUs/>}/>
         <Route path="/location" element={<Location/>}/>
         <Route path="/signin" element={<SignIn/>}/>
+
+        <Route path="/like" element={<MyLike/>}/>
+        <Route path="/favorite" element={<MyFav/>}/>
+        <Route path="/mycart" element={<MyCarts/>}/>
         <Route path="">404</Route>
       </Routes>
     <Footer/>

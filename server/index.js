@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
-const { postAccount, getAccount,getHistory } = require("./handlers");
+const { postAccount, getAccount,getHistory,addFavorite,addToBorrowCart,shareTo
+,getLike,getBorrowCart,getShare} = require("./handlers");
 // const {slideItems} = require('.././client/src/slideshow-gallery/')
 const port = 8000;
 
@@ -14,6 +15,11 @@ express()
   .get("/api/account", getAccount)
 
   .get("/api/history",getHistory)
+
+  .post('/api/favorites',addFavorite)
+
+  .post('/api/borrowCart',addToBorrowCart)
+  .post('/api/shareTo',shareTo)
 
 
   .listen(port, () => {
