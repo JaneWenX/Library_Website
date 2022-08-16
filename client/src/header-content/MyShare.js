@@ -1,15 +1,15 @@
 import React, {useEffect,useState} from 'react'
-import styled from 'styled-components';
-import axios from "axios";
+import styled from 'styled-components'
+import axios from 'axios';
 
-const MyLike = () => {
-const [likes,setLikes] = useState('')
+const MyShare = () => {
+  const [shares,setShares] = useState('')
   useEffect(()=>{
     axios
-    .get('/api/favorites')
+    .get('/api/shareTo')
     .then((res)=>{
       console.log(res.data.data)
-      setLikes(res.data.data)
+      setShares(res.data.data)
     })
     .catch((err)=>{
       console.log(err)
@@ -18,17 +18,15 @@ const [likes,setLikes] = useState('')
 
   return (
     <Wrapper>
-      {likes && likes.map((like)=>{
+      {shares && shares.map((share)=>{
         return(
           <>
-            <Img src={`https://covers.openlibrary.org/b/olid/${like.cover}-S.jpg`}/>
-            <Title>{like.title}</Title>
-            <Author>Author: {like.author}</Author>
+            <Img src={`https://covers.openlibrary.org/b/olid/${share.cover}-S.jpg`}/>
+            <Title>{share.title}</Title>
+            <Author>Author: {share.author}</Author>
           </>
         )
       })}
-
-
     </Wrapper>
   )
 }
@@ -49,4 +47,4 @@ const Author = styled.div`
   margin:0px 0px 10px 20px;
   font-family: 'Courier New', monospace;
 `
-export default MyLike
+export default MyShare

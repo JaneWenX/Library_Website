@@ -117,7 +117,6 @@ const Bookdetails = () => {
         <RightWord>
           <BookInfo>
           <Title>{book.title}</Title>
-
           <Author>Author: {book.authors[0].name}</Author>
           </BookInfo>
           <IconBar>

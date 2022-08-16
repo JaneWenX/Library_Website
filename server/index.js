@@ -21,6 +21,10 @@ express()
   .post('/api/borrowCart',addToBorrowCart)
   .post('/api/shareTo',shareTo)
 
+  .get("/api/favorites", getLike)
+  .get("/api/borrowCart", getBorrowCart)
+  .get("/api/shareTo", getShare)
+
 
   .listen(port, () => {
     console.log(`Example app listening on port ${port}`);

@@ -23,8 +23,8 @@ const Navbar = () => {
     {/* <MenuToggle></MenuToggle> */}
     <NavbarDropdownContent>
       <List to="/history">History</List>
-      <List to="/like">My Likes</List>
-      <List to="/favorite">My Favorites</List>
+      <List to="/myshare">My Shares</List>
+      <List to="/like">My Favorites</List>
       <List to="/mycart">My Cart</List>
       {/* <List>Logout</List> */}
   </NavbarDropdownContent>

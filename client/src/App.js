@@ -12,8 +12,9 @@ import Location from "./Footer/Location";
 import GlobalStyles from "./GlobalStyles";
 import SignIn from "./header-content/SignIn";
 import MyLike from './header-content/MyLike'
-import MyFav from './header-content/MyFav'
+import MyFav from './header-content/MyShare'
 import MyCarts from './header-content/MyCarts';
+import MyShare from "./header-content/MyShare";
 
 const App = () =>{
 
@@ -32,7 +33,7 @@ const App = () =>{
         <Route path="/signin" element={<SignIn/>}/>
 
         <Route path="/like" element={<MyLike/>}/>
-        <Route path="/favorite" element={<MyFav/>}/>
+        <Route path="/myshare" element={<MyShare/>}/>
         <Route path="/mycart" element={<MyCarts/>}/>
         <Route path="">404</Route>
       </Routes>
