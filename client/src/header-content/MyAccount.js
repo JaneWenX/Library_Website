@@ -42,7 +42,18 @@ const MyAccount = () => {
         <Span>Last name</Span>
         <Input></Input>
         <Span>Preference</Span>
-        {profiles&&<Input value={profiles[0].preference}/>}
+        <Select>
+            {profiles && <option>{profiles[0].preference}</option>}
+            <option>ACTION AND ADVENTURE</option>
+            <option>CHILDREN</option>
+            <option>CLASSICS</option>
+            <option>COMICS</option>
+            <option>FANTASY</option>
+            <option>HISTORY</option>
+            <option>HORROR</option>
+            <option>LOVE</option>
+            <option>NOVEL</option>
+        </Select>
         <Button type="submit">Submit Changes</Button>
     </Form>
     </Wrapper>
@@ -57,8 +68,9 @@ justify-content:flex-start;
   font-weight: bold;
 `;
 const Button = styled.button`
-  margin: 10px 100px;
+  margin: 10px 190px;
   padding: 10px;
+  width: 220px;
   font-weight: bolder;
 `;
 const Wrapper = styled.div`
@@ -72,10 +84,10 @@ const Wrapper = styled.div`
 const Title = styled.div`
 font-family: "Open Sans",sans-serif;
 font-size: 2.8416rem;
-margin: 30px 100px;
+margin: 30px 0px;
 `
 const Input = styled.input`
-  margin: 10px 100px;
+  margin: 10px 190px;
   padding: 10px;
   width: 200px;
   background-color:lightgray;
@@ -84,7 +96,24 @@ const Input = styled.input`
 const Span = styled.label`
     font-family:"Roboto",Sans-Serif;
     font-size:1rem;
-    margin: 10px 100px;
-
+    margin: 10px 190px;
 `
+const Select = styled.select`
+  width: 215px;
+  height: 35px;
+  background: white;
+  color: gray;
+  padding-left: 5px;
+  font-size: 14px;
+  border-radius: 2%;
+  margin: 10px 190px;
+  option {
+    color: black;
+    background: white;
+    display: flex;
+    white-space: pre;
+    min-height: 20px;
+    padding: 0px 2px 1px;
+  }
+`;
 export default MyAccount
