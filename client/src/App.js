@@ -23,6 +23,7 @@ const App = () =>{
       <GlobalStyles/>
       <Header/>
       <Navbar/>
+      <Div>
       <Routes>
         <Route exact path="/" element={<Homepage/>}/>
         <Route path="/category" element={<Category/>}/>
@@ -37,15 +38,20 @@ const App = () =>{
         <Route path="/mycart" element={<MyCarts/>}/>
         <Route path="">404</Route>
       </Routes>
+      </Div>
     <Footer/>
     </Wrapper>
   );
 }
+const Div = styled.div`
+    flex:1;
+ 
+`
 
 const Wrapper = styled.div`
   height: 100vh;
   width:100vw;
-  background: var(--color-orange);
+  /* background: var(--color-orange); */
   display: flex;
   flex-direction: column;
   margin-left:0;

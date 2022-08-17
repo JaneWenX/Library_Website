@@ -4,11 +4,12 @@ import axios from "axios";
 
 const MyLike = () => {
 const [likes,setLikes] = useState('')
+  //this is to get the liked data in mangoDB
+
   useEffect(()=>{
     axios
     .get('/api/favorites')
     .then((res)=>{
-      console.log(res.data.data)
       setLikes(res.data.data)
     })
     .catch((err)=>{
@@ -20,18 +21,24 @@ const [likes,setLikes] = useState('')
     <Wrapper>
       {likes && likes.map((like)=>{
         return(
-          <>
-            <Img src={`https://covers.openlibrary.org/b/olid/${like.cover}-S.jpg`}/>
+          <List>
+            <Div>
+          <A href={`https://openlibrary.org/${like.key}`} target="_blank">
             <Title>{like.title}</Title>
+            </A>
             <Author>Author: {like.author}</Author>
-          </>
-        )
+            </Div>
+            <Img src={`https://covers.openlibrary.org/b/olid/${like.cover}-S.jpg`}/>
+            </List>        )
       })}
 
 
     </Wrapper>
   )
 }
+const A = styled.a`
+  text-decoration:none;
+`
 const Wrapper = styled.div`
   margin: 0px;
   height: 100%;
@@ -48,5 +55,24 @@ const Author = styled.div`
   /* display:flex-start; */
   margin:0px 0px 10px 20px;
   font-family: 'Courier New', monospace;
+`
+const List = styled.div`
+    background-color: #eee;
+    font-family:Arial, Helvetica, sans-serif;
+    width: 500px;
+    margin: 10px auto;
+    padding: 15px;
+    border-right: 5px solid #EBD671;
+    position: relative;
+    counter-increment: number;
+    display:flex;
+    justify-content: space-between;
+    &:hover{
+      box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .25);
+    transition: all .2s ease-in-out;    }
+`
+const Div = styled.div`
+  display: flex;
+  flex-direction:column;
 `
 export default MyLike

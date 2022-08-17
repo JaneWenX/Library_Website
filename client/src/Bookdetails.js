@@ -7,30 +7,30 @@ import { BiBookAdd } from "react-icons/bi";
 import { AiOutlineShareAlt } from "react-icons/ai";
 import axios from "axios";
 import styled from 'styled-components';
-import ReactPaginate from 'react-paginate';
+// import ReactPaginate from 'react-paginate';
 
 
 const Bookdetails = () => {
   const {subjectId} = useParams();
-  // console.log(subjectId)
   const [books,setBooks] = useState('')
   const [fav,setFav] = useState(false)
   const [add,setAdd] = useState(false)
   const [share,setShare] = useState(false)
+
+  //this is to get the API data by subjectId
+
   useEffect(()=>{
     axios
     .get(`http://openlibrary.org/subjects/${subjectId}.json`)
     .then((res) => {
-      console.log(res.data.works)
       setBooks(res.data.works);
-      console.log(typeof(res.data.works[0].availability))
-      console.log(res.data.works[0].key)
-
     })
     .catch((err) => {
       console.log("get subject:", err)
     });
    },[subjectId])
+
+  //this is to post the book data to mangoDB by clicking
 
    const handleFav = (book)=>(e)=>{
     e.preventDefault();
@@ -51,7 +51,6 @@ const Bookdetails = () => {
     .catch((err)=>{
       console.log("add to favorite:",err)
     })
-
    }
 
    const handleAdd =(book)=>(e)=>{
@@ -79,7 +78,7 @@ const Bookdetails = () => {
       method:'POST',
       url:'/api/shareTo',
       data:{
-        author: book.authors[0].name,
+      author: book.authors[0].name,
       title:book.title,
       cover:book.cover_edition_key,
       key:book.key,
@@ -151,7 +150,7 @@ const PerBook = styled.div`
   background:white;
   width:60%;
   /* height:21%; */
-  margin:15px;
+  margin-bottom:15px;
   box-shadow: 10px 10px 5px #aaaaaa;
 
 `

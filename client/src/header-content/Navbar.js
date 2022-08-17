@@ -20,7 +20,6 @@ const Navbar = () => {
     </StyledNav>
     <NavbarDropdown>
     <VscAccount size={25} cursor="pointer"/>
-    {/* <MenuToggle></MenuToggle> */}
     <NavbarDropdownContent>
       <List to="/history">History</List>
       <List to="/myshare">My Shares</List>

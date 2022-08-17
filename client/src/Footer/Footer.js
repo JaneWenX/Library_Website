@@ -15,9 +15,9 @@ const Wrapper = styled.footer`
   height: 7%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   text-align: center;
-  /* margin-top:100%; */
+  /* margin-top:-50px; */
 `;
 const StyledNav = styled(NavLink)`
   margin: 40px;

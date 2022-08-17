@@ -1,5 +1,5 @@
 
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectId } = require("mongodb");
 require("dotenv").config();
 const { MONGO_URI } = process.env;
 
@@ -135,6 +135,26 @@ const getShare = async(req,res) =>{
   allShare? res.status(200).json({status: 200,data: allShare,message: "get allShare success!",})
     : res.status(404).json({ status: 404, message: "get allShare fail!" });
 client.close();
+}
+
+const deleteCart = async(req,res)=>{
+  const client = new MongoClient(MONGO_URI, options);
+
+  await client.connect();
+  const db = client.db("Library");
+
+  //to define how to get new added item info in cart
+  const _id = req.params.bookId
+  console.log(_id)
+  const theOneTo = await db.collection("borrowCart").findOne({_id:_id})
+  const toDelete = await db.collection("borrowCart").deleteOne({theOneTo})
+  console.log(toDelete)
+  toDelete? res.status(200).json({status: 200,data:toDelete,message: "delete toDelete success!",})
+    : res.status(404).json({ status: 404, message: "delete toDelete fail!" });
+client.close();
 
 }
-module.exports = {postAccount,getAccount,getHistory,addFavorite,addToBorrowCart,shareTo,getLike,getBorrowCart,getShare  }
+
+module.exports = {postAccount,getAccount,getHistory,addFavorite,addToBorrowCart,shareTo,getLike,getBorrowCart,getShare
+,deleteCart
+  }
