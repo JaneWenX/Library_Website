@@ -145,16 +145,25 @@ const deleteCart = async(req,res)=>{
 
   //to define how to get new added item info in cart
   const _id = req.params.bookId
-  console.log(_id)
   const theOneTo = await db.collection("borrowCart").findOne({_id:_id})
   const toDelete = await db.collection("borrowCart").deleteOne({theOneTo})
-  console.log(toDelete)
   toDelete? res.status(200).json({status: 200,data:toDelete,message: "delete toDelete success!",})
     : res.status(404).json({ status: 404, message: "delete toDelete fail!" });
 client.close();
-
 }
 
+const patchPreference = async(req,res) => {
+  const client = new MongoClient(MONGO_URI, options);
+
+  await client.connect();
+  const db = client.db("Library");
+  const _id = req.params.accountId
+  const theOneTo = await db.collection("accounts").findOne({_id:_id})
+  const toUpdate = await db.collection("accounts").updateOne({theOneTo})
+  toUpdate? res.status(200).json({status: 200,data:toUpdate,message: "update toUpdate success!",})
+    : res.status(404).json({ status: 404, message: "update toUpdate fail!" });
+client.close();
+}
 module.exports = {postAccount,getAccount,getHistory,addFavorite,addToBorrowCart,shareTo,getLike,getBorrowCart,getShare
-,deleteCart
+,deleteCart,patchPreference
   }

@@ -12,9 +12,9 @@ import Location from "./Footer/Location";
 import GlobalStyles from "./GlobalStyles";
 import SignIn from "./header-content/SignIn";
 import MyLike from './header-content/MyLike'
-import MyFav from './header-content/MyShare'
 import MyCarts from './header-content/MyCarts';
 import MyShare from "./header-content/MyShare";
+import MyAccount from "./header-content/MyAccount";
 
 const App = () =>{
 
@@ -32,6 +32,7 @@ const App = () =>{
         <Route path="/contact" element={<ContactUs/>}/>
         <Route path="/location" element={<Location/>}/>
         <Route path="/signin" element={<SignIn/>}/>
+        <Route path="/profile" element={<MyAccount/>}/>
 
         <Route path="/like" element={<MyLike/>}/>
         <Route path="/myshare" element={<MyShare/>}/>

@@ -2,7 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const { postAccount, getAccount,getHistory,addFavorite,addToBorrowCart,shareTo
 ,getLike,getBorrowCart,getShare
-,deleteCart
+,deleteCart,patchPreference
 } = require("./handlers");
 // const {slideItems} = require('.././client/src/slideshow-gallery/')
 const port = 8000;
@@ -28,6 +28,7 @@ express()
   .get("/api/shareTo", getShare)
 
   .delete('/api/borrowCart/:bookId', deleteCart)
+  .patch('/api/account/:accountId',patchPreference)
 
   .listen(port, () => {
     console.log(`Example app listening on port ${port}`);

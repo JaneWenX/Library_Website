@@ -1,6 +1,5 @@
 import React from 'react'
 import { ImHome } from "react-icons/im";
-import {ImMenu} from "react-icons/im"
 import styled from 'styled-components';
 import { VscAccount } from "react-icons/vsc";
 import { NavLink } from 'react-router-dom';
@@ -11,21 +10,19 @@ const Navbar = () => {
     <StyledNav to='/'>
     <ImHome size={25}/>
     </StyledNav>
-    <ImMenu size={25}/>
     <Span>Welcome</Span>
     </Div>
     <Div>
     <StyledNav to='/signin'>
-    <Span>My Account</Span>
+    <Span>Sign In</Span>
     </StyledNav>
     <NavbarDropdown>
     <VscAccount size={25} cursor="pointer"/>
     <NavbarDropdownContent>
-      <List to="/history">History</List>
       <List to="/myshare">My Shares</List>
       <List to="/like">My Favorites</List>
       <List to="/mycart">My Cart</List>
-      {/* <List>Logout</List> */}
+      <List to="/profile">Profile</List>
   </NavbarDropdownContent>
   </NavbarDropdown>
     </Div>

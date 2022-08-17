@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 
 const MyCarts = () => {
   const [carts, setCarts] = useState([]);
@@ -9,18 +8,18 @@ const MyCarts = () => {
   // console.log(bookId)
   //this is to get the cart data in mangoDB
 
-  const deleteSubmit = (e)=>{
+  const deleteSubmit = (e) => {
     const _id = e.target.id;
     axios
-    .delete(`/api/borrowCart/${_id}`)
-    .then((res) => {
-      console.log(res)
-      document.location.reload(true);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  }
+      .delete(`/api/borrowCart/${_id}`)
+      .then((res) => {
+        console.log(res);
+        document.location.reload(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
     axios
@@ -100,15 +99,15 @@ const List = styled.div`
   }
   &::before {
     content: counter(number);
-    background-color: #EBD671;
-    border-left: 1px solid #EBD671;
+    background-color: #ebd671;
+    border-left: 1px solid #ebd671;
     border-radius: 5px;
     padding: 15px;
     color: white;
     position: absolute;
     left: -30px;
     top: 0px;
-}
+  }
 `;
 const Div = styled.div`
   display: flex;

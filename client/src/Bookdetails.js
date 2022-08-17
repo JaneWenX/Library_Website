@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink, useParams } from 'react-router-dom'
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { FcLike } from "react-icons/fc";
+import { AiOutlineHeart } from "react-icons/ai";
 import { BiBookAdd } from "react-icons/bi";
 import { AiOutlineShareAlt } from "react-icons/ai";
 import axios from "axios";
@@ -51,6 +51,8 @@ const Bookdetails = () => {
     .catch((err)=>{
       console.log("add to favorite:",err)
     })
+    e.target.disabled = true;
+
    }
 
    const handleAdd =(book)=>(e)=>{
@@ -120,7 +122,7 @@ const Bookdetails = () => {
           </BookInfo>
           <IconBar>
           <Button>
-          <FcLike size={30} onClick={handleFav(book)}/> Favorites
+          <AiOutlineHeart size={30} onClick={handleFav(book)}/> Favorites
           </Button>
           <Button>
           <BiBookAdd size={30} onClick={handleAdd(book)}/> Add
@@ -195,6 +197,24 @@ const Button = styled.button`
   padding:15px;
   border: none;
   background:none;
+  /* transform: translate(-50%, -50%);
+  cursor: pointer; */
+
+
+  @keyframes fave-heart {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -2800px 0;
+  }
+}
+&:active {
+  animation: 'fave-heart' 1s steps(28);
+  background-position: -2800px 0;
+  transition: background 1s steps(28);
+  cursor: default;
+  }
 `
 const BookInfo = styled.div`
   height:70%;
